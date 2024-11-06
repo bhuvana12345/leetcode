@@ -15,11 +15,6 @@ Each folder contains the following:
 - Completing and optimizing solutions for the remaining questions.
 - Refining SQL techniques and learning new concepts.
 
-## Next Steps
-
-- Continue with the next set of questions.
-- Review and optimize past solutions.
-
 ## Notes
 
 - This repository will be updated regularly as I progress through the SQL50 questions.
