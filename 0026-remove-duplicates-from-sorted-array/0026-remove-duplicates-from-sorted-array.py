@@ -8,7 +8,7 @@ class Solution:
 
     # Iterate over the array
         for i in range(1, len(nums)):
-            if nums[i] != nums[k]:  # If the current eleme
+            if nums[i] != nums[k]:  # If the current ele
                 k += 1             # Move the unique index forward
                 nums[k] = nums[i]  # Update the next unique position 
 
