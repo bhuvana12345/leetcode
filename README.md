@@ -1,4 +1,4 @@
-# LeetCode SQL50 Progress
+# LeetCode SQL 
 
 This repository documents my journey through the SQL50 questions on LeetCode. The goal is to enhance my SQL skills by tackling real-world problems.
 
