@@ -1,34 +1,15 @@
-# Write your MySQL query statement below
-WITH PriceMatch AS (
-    SELECT
-        u.product_id,
-        u.units,
-        p.price,
-        u.units * p.price AS total_price
-    FROM
-        UnitsSold u
-    JOIN
-        Prices p
-    ON
-        u.product_id = p.product_id
-        AND u.purchase_date BETWEEN p.start_date AND p.end_date
-),
-Aggregated AS (
-    SELECT
-        product_id,
-        SUM(total_price) AS total_price,
-        SUM(units) AS total_units
-    FROM
-        PriceMatch
-    GROUP BY
-        product_id
-)
-SELECT
+SELECT 
     p.product_id,
-    ROUND(COALESCE(a.total_price / a.total_units, 0), 2) AS average_price
-FROM
-    (SELECT DISTINCT product_id FROM Prices) p
-LEFT JOIN
-    Aggregated a
-ON
-    p.product_id = a.product_id;
+    ROUND(
+        COALESCE(SUM(us.units * p.price) / NULLIF(SUM(us.units), 0), 0),
+        2
+    ) AS average_price
+FROM 
+    Prices p
+LEFT JOIN 
+    UnitsSold us
+ON 
+    p.product_id = us.product_id 
+    AND us.purchase_date BETWEEN p.start_date AND p.end_date
+GROUP BY 
+    p.product_id;
